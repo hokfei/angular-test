@@ -1,9 +1,9 @@
 <p>video-list works!</p>
 <ul>
-  <li *ngFor="let video of videoList; index as i">
+  <li *ngFor="let video of videoList; index as i" (click)="selectVideo(i)" [class.selected-video]="selected === i">
     <strong>{{i+1}}.</strong> {{video.title}} - {{video.author}}
     <p *ngFor="let detail of video.viewDetails">
-      age: {{detail.age}}, date: {{detail.date}}, region: {{detail.region}}
+      age: {{detail.age}}, date: {{detail.date | date:'longDate' | uppercase}}, region: :{{detail.region | lowercase}}
     </p>
 
   </li>

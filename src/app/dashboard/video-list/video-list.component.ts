@@ -11,10 +11,15 @@ const videoListData = [{title: 'Angular Observable Data Flow', author: 'Kyle Cor
 export class VideoListComponent implements OnInit {
 
   public videoList = videoListData;
+  public selected;
+
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  selectVideo(i: number): void {
+    this.selected = i;
+  }
 }
