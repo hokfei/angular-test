@@ -1,1 +1,10 @@
 <p>video-list works!</p>
+<ul>
+  <li *ngFor="let video of videoList; index as i">
+    <strong>{{i+1}}.</strong> {{video.title}} - {{video.author}}
+    <p *ngFor="let detail of video.viewDetails">
+      age: {{detail.age}}, date: {{detail.date}}, region: {{detail.region}}
+    </p>
+
+  </li>
+</ul>
