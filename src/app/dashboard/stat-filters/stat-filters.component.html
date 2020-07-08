@@ -1,1 +1,21 @@
 <p>stat-filters works!</p>
+<form [formGroup]="filters" (ngSubmit)="formSubmitted()">
+  <div>
+    <label for="title">Title: </label>
+    <input
+      id="title"
+      type="text"
+      formControlName="title"
+    />
+    <span *ngIf="filters.get('title')?.valid && filters.get('title')?.touched">This is valid</span>
+  </div>
+  <div>
+    <label for="author">Author: </label>
+    <input
+      id="author"
+      type="text"
+      formControlName="author"
+    />
+  </div>
+  <button>Submit</button>
+</form>

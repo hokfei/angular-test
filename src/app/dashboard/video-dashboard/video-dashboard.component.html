@@ -1,4 +1,4 @@
-<app-video-list class="aComponent" (selectedVideo)="setSelectedVideo($event)" [videos]="videoList"></app-video-list>
+<app-video-list class="aComponent" (selectedVideo)="setSelectedVideo($event)" [videos]="videoList | async"></app-video-list>
 <app-video-player class="aComponent" [selectedVideo]="video"></app-video-player>
 <app-stat-filters class="aComponent"></app-stat-filters>
 

@@ -1,5 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Video} from '../types';
+import {HttpClient} from '@angular/common/http';
+import {VideoDataService} from '../../video-data.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-video-dashboard',
@@ -9,8 +12,14 @@ import {Video} from '../types';
 export class VideoDashboardComponent implements OnInit {
 
   video: Video | undefined;
-  videoList: Video [] = [{title: 'Angular Observable Data Flow', author: 'Kyle Cordes', id: 'JPuqluYYa-o', viewDetails: [{age: 17, region: 'North America', date: '2016-03-23'}, {age: 27, region: 'North America', date: '2016-03-23'}, {age: 37, region: 'North America', date: '2016-03-23'}, {age: 47, region: 'Europe', date: '2016-03-24'}, {age: 37, region: 'North America', date: '2016-03-24'}, {age: 17, region: 'North America', date: '2016-03-25'}]}, {title: 'Angular Performance Checklist', author: 'Paul Spears', id: 'cxqRijt9LbQ', viewDetails: [{age: 36, region: 'North America', date: '2016-06-23'}, {age: 30, region: 'North America', date: '2016-06-23'}, {age: 54, region: 'North America', date: '2016-07-23'}, {age: 43, region: 'Europe', date: '2016-0-24'}, {age: 32, region: 'North America', date: '2016-08-24'}, {age: 32, region: 'North America', date: '2016-08-25'}]}, {title: 'Live App Updates Without The App Store', author: 'Sani Yusuf', id: 's10wrXA-a7Y', viewDetails: [{age: 17, region: 'North America', date: '2016-03-23'}, {age: 27, region: 'North America', date: '2016-03-23'}, {age: 37, region: 'North America', date: '2016-03-23'}, {age: 47, region: 'Europe', date: '2016-03-24'}, {age: 37, region: 'North America', date: '2016-03-24'}, {age: 17, region: 'North America', date: '2016-03-25'}]}, {title: 'Angular Reactive Forms', author: 'Jack Balbes', id: 'A_Rq6ZsoXpI', viewDetails: [{age: 36, region: 'North America', date: '2016-06-23'}, {age: 30, region: 'North America', date: '2016-06-23'}, {age: 54, region: 'North America', date: '2016-07-23'}, {age: 43, region: 'Europe', date: '2016-0-24'}, {age: 32, region: 'North America', date: '2016-08-24'}, {age: 32, region: 'North America', date: '2016-08-25'}]}, {title: 'Imperative to Reactive with Angular and RxJS', author: 'John Baur', id: 'VJOPsjlbhdg', viewDetails: [{age: 17, region: 'North America', date: '2016-03-23'}, {age: 27, region: 'North America', date: '2016-03-23'}, {age: 37, region: 'North America', date: '2016-03-23'}, {age: 47, region: 'Europe', date: '2016-03-24'}, {age: 37, region: 'North America', date: '2016-03-24'}, {age: 17, region: 'North America', date: '2016-03-25'}]}];
-  constructor() { }
+  videoList: Observable<Video[]>;
+
+  constructor(service: VideoDataService) {
+    this.videoList = service.loadVideos();
+/*    service.loadVideos()
+      .subscribe((videos) => (this.videoList = videos));
+*/
+  }
 
   ngOnInit(): void {
   }
