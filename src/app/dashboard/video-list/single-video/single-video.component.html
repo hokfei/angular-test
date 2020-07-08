@@ -1,0 +1,5 @@
+<p>single-video works!</p>
+<strong>{{index+1}}.</strong> {{video.title}} - {{video.author}}
+<p *ngFor="let detail of video.viewDetails">
+  age: {{detail.age}}, date: {{detail.date | date:'longDate' | uppercase}}, region: :{{detail.region | lowercase}}
+</p>

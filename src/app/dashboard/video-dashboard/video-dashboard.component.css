@@ -1,0 +1,6 @@
+.aComponent{
+  display: inline-flex;
+  width: 33%;
+  border: darkred 1px solid;
+  text-align: start;
+}
